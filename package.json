@@ -1,0 +1,36 @@
+{
+  "name": "aimless",
+  "description": "",
+  "main": "dist/aimless.js",
+  "module": "dist/aimless.module.js",
+  "jsnext:main": "dist/aimless.module.js",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": "",
+  "author": {
+    "name": "Chris Cavalea",
+    "email": "chriscavs94@gmail.com",
+    "url": "https://chriscavs.github.io/"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w -m inline",
+    "prebuild": "rm -rf dist",
+    "prepublish": "npm run test",
+    "pretest": "npm run build",
+    "server": "python -m SimpleHTTPServer 3000",
+    "test": "mocha"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.34",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.34",
+    "@babel/preset-env": "^7.0.0-beta.34",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "rollup": "^0.52.1",
+    "rollup-plugin-babel": "^4.0.0-beta.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "standard": "^10.0.3"
+  }
+}
