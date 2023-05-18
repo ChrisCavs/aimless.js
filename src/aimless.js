@@ -1,36 +1,88 @@
+const generateListFromRange = (min, max) => {
+    const result = []
+    for (let i = min; i <= max; i++) {
+        result.push(i)
+    }
+    return result
+}
+
+const randIntRange = (i, j, engine) => {
+    const min = Math.ceil(i)
+    const max = Math.floor(j)
+    return Math.floor(engine() * (max - min + 1)) + min
+}
+
+const sliceOut = (arr, i) => {
+    return arr.slice(0, i).concat(arr.slice(i + 1))
+}
+
 class Aimless {
-    constructor(engine) {
-        this.engine = engine || Math.random
+    constructor(engine = Math.random) {
+        this.engine = engine
     }
 
     call() {
         return this.engine()
     }
 
-    intRange(i, j) {
-        const min = Math.ceil(i)
-        const max = Math.floor(j)
-        return Math.floor(this.engine() * (max - min + 1)) + min
+    intRange(min, max) {
+        return randIntRange(min, max, this.engine)
     }
 
     floatRange(min, max) {
         return this.engine() * (max - min) + min
     }
 
-    weighted(nums, weights) {
-        if (nums.length !== weights.length) {
-            throw new Error('Every provided number must have a corresponding weight')
+    oneOf(arr) {
+        return arr[this.intRange(0, arr.length - 1)]
+    }
+
+    sequence(arr) {
+        const result = []
+        let tempArr = arr
+        let i
+
+        while (result.length < arr.length) {
+            i = this.intRange(0, tempArr.length - 1)
+            result.push(tempArr[i])
+            tempArr = sliceOut(tempArr, i)
         }
 
-        const totalWeight = weights.reduce((sum, weight) => sum + weight, 0)
-        const randomNumber = this.engine() * totalWeight
+        return result
+    }
+
+    intSequence(min, max) {
+        return this.sequence(
+            generateListFromRange(min, max)
+        )
+    }
+
+    bool() {
+        return !!this.intRange(0,1)
+    }
+
+    char(str) {
+        return str[this.intRange(0, str.length - 1)]
+    }
+
+    weighted(nums, weights) {
+        if (nums.length !== weights.length) {
+            throw new Error(
+                'Every provided number must have a corresponding weight'
+            )
+        }
+
+        const totalWeight = weights.reduce(
+            (sum, weight) => sum + weight, 0
+        )
+        const rand = this.engine() * totalWeight
 
         let cumulativeWeight = 0
         let selectedIndex = 0
 
         for (let i = 0; i < nums.length; i++) {
             cumulativeWeight += weights[i]
-            if (randomNumber < cumulativeWeight) {
+            if (rand < cumulativeWeight) {
                 selectedIndex = i
                 break
             }
@@ -50,49 +102,40 @@ class Aimless {
         } while (s === 0 || s >= 1)
 
         const t = Math.sqrt((-2 * Math.log(s)) / s)
-        const randomNumber = mean + (stdDev * u * t)
+        const rand = mean + (stdDev * u * t)
 
-        return randomNumber
+        return rand
     }
 
-    sequence(arr) {
-        const result = []
-        let tempArr = arr
-        let i
-
-        while (result.length < arr.length) {
-            i = this.intRange(0, tempArr.length - 1)
-            result.push(tempArr[i])
-            tempArr = tempArr.slice(0, i).concat(tempArr.slice(i + 1))
-        }
-
-        return result
-    }
-
-    intSequence(min, max) {
-        const arr = []
-        for (let i = min; i <= max; i++) {
-            arr.push(i)
-        }
-        return this.sequence(arr)
-    }
-
-    bool() {
-        return !!this.intRange(0,1)
-    }
-
-    char(str) {
-        return str[this.intRange(0, str.length - 1)]
-    }
-
-    static seededFunc(seed) {
+    static seedFunc(seed) {
         // Park-Miller PRNG
         let currentSeed = seed % 2147483647
 
-        return function () {
+        return () => {
             currentSeed = (currentSeed * 16807) % 2147483647
             return (currentSeed - 1) / 2147483646
         }
+    }
+
+    static uniqFuncSequence(arr, engine = Math.random) {
+        let tempArr = arr
+
+        return () => {
+            if (!tempArr.length) return null
+
+            const i = randIntRange(0, tempArr.length - 1, engine)
+            const result = tempArr[i]
+            tempArr = sliceOut(tempArr, i)
+
+            return result
+        }
+    }
+
+    static uniqFuncIntRange(min, max, engine = Math.random) {
+        return this.uniqFuncSequence(
+            generateListFromRange(min, max),
+            engine
+        )
     }
 }
 

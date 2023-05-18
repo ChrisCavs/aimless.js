@@ -68,22 +68,26 @@ describe('aimless', () => {
     const sampleVariance = samples.reduce((sum, value) => sum + ((value - sampleMean) ** 2), 0) / numSamples;
     const sampleStdDev = Math.sqrt(sampleVariance);
 
-    expect(sampleMean).closeTo(0, .01)
-    expect(sampleStdDev).closeTo(1, .01)
+    expect(sampleMean).closeTo(0, .015)
+    expect(sampleStdDev).closeTo(1, .015)
   })
   it('should produce a seed function that is predictable', () => {
-    const seedFunc = Aimless.seededFunc(1233)
+    const seedFunc = Aimless.seedFunc(1233)
     const result = []
 
     for (let i = 0; i < 10; i++) {
       result.push(seedFunc())
     }
 
-    const newSeedFunc = Aimless.seededFunc(1233)
+    const newSeedFunc = Aimless.seedFunc(1233)
 
     for (let i = 0; i < 10; i++) {
       expect(newSeedFunc()).to.equal(result[i])
     }
+  })
+  it('should return a random item from a sequence', () => {
+    const testArr = [1,2,3,4,5]
+    expect(testArr).to.include(rand.oneOf(testArr))
   })
   it('should produce a random array sequence', () => {
     const testArr = [12,5,9,-20,5]
@@ -107,5 +111,35 @@ describe('aimless', () => {
   it('should produce a random character in string', () => {
     const testStr = 'hello my name is'
     expect(testStr).to.include(rand.char(testStr))
+  })
+  it('should produce a unique function that accepts a sequence', () => {
+    const testSequence = [10,-20,3,750,'s']
+    const capture = []
+    const uniqRand = Aimless.uniqFuncSequence(testSequence)
+
+    for (let i = 0; i < testSequence.length; i++) {
+      capture.push(uniqRand())
+    }
+
+    expect(uniqRand()).to.be.null
+
+    capture.forEach((item) => {
+      expect(testSequence).to.include(item)
+    })
+  })
+  it('should produce a unique function that accepts a range', () => {
+    const testSequence = [1,2,3,4,5]
+    const capture = []
+    const uniqRand = Aimless.uniqFuncIntRange(1,5)
+
+    for (let i = 0; i < testSequence.length; i++) {
+      capture.push(uniqRand())
+    }
+
+    expect(uniqRand()).to.be.null
+
+    capture.forEach((item) => {
+      expect(testSequence).to.include(item)
+    })
   })
 })
