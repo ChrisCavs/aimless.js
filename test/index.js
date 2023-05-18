@@ -85,4 +85,27 @@ describe('aimless', () => {
       expect(newSeedFunc()).to.equal(result[i])
     }
   })
+  it('should produce a random array sequence', () => {
+    const testArr = [12,5,9,-20,5]
+    const resultArr = rand.sequence(testArr)
+
+    testArr.forEach((item) => {
+      expect(resultArr).to.include(item)
+    })
+  })
+  it('should produce a random integer sequence from range', () => {
+    const testArr = [1,2,3,4,5]
+    const resultArr = rand.intSequence(1,5)
+
+    testArr.forEach((item) => {
+      expect(resultArr).to.include(item)
+    })
+  })
+  it('should produce a random boolean', () => {
+    expect([true, false]).to.include(rand.bool())
+  })
+  it('should produce a random character in string', () => {
+    const testStr = 'hello my name is'
+    expect(testStr).to.include(rand.char(testStr))
+  })
 })

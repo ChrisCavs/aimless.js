@@ -55,12 +55,34 @@ class Aimless {
         return randomNumber
     }
 
-    intSequence(min, max) {
-        // random sequence of the range returned as array
+    sequence(arr) {
+        const result = []
+        let tempArr = arr
+        let i
+
+        while (result.length < arr.length) {
+            i = this.intRange(0, tempArr.length - 1)
+            result.push(tempArr[i])
+            tempArr = tempArr.slice(0, i).concat(tempArr.slice(i + 1))
+        }
+
+        return result
     }
 
-    arrSequence(arr) {
-        
+    intSequence(min, max) {
+        const arr = []
+        for (let i = min; i <= max; i++) {
+            arr.push(i)
+        }
+        return this.sequence(arr)
+    }
+
+    bool() {
+        return !!this.intRange(0,1)
+    }
+
+    char(str) {
+        return str[this.intRange(0, str.length - 1)]
     }
 
     static seededFunc(seed) {
