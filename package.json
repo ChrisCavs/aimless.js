@@ -6,7 +6,7 @@
   "jsnext:main": "dist/aimless.module.js",
   "version": "0.0.1",
   "license": "MIT",
-  "repository": "",
+  "repository": "ChrisCavs/aimless.js",
   "author": {
     "name": "Chris Cavalea",
     "email": "chriscavs94@gmail.com",
