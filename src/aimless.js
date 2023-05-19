@@ -226,8 +226,8 @@ class Aimless {
 
     /**
      * Returns a PRNG function that returns unique values from the provided range.
-     * @param min Minimum
-     * @param max Maximum
+     * @param min Minimum integer
+     * @param max Maximum integer
      * @param engine Engine to be used as PRNG
      */
     static uniqFuncIntRange(min, max, engine = Math.random) {
