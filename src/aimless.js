@@ -115,13 +115,21 @@ class Aimless {
         return rand
     }
 
+    exponentialDist(lambda) {
+        return -Math.log(1 - this.engine()) / lambda
+    }
+
+    customDist(func) {
+        return func(this.engine())
+    }
+
     uuid() {
         // Returns a valid RFC4122 version4 ID hex string
         // Credit @Alexey Silin from https://gist.github.com/1308368
-        var a = '';
-        var b = '';
+        var a = ''
+        var b = ''
         for (b = a = ''; a++ < 36; b += ~a % 5 | a * 3 & 4 ? (a ^ 15 ? 8 ^ this.engine() * (a ^ 20 ? 16 : 4) : 4).toString(16) : '-') {}
-        return b;
+        return b
     }
 
     static seedFunc(seed) {

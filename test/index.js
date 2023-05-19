@@ -65,13 +65,13 @@ describe('aimless', () => {
     const samples = []
 
     for (let i = 0; i < numSamples; i++) {
-      const randomValue = rand.normalDist(mean, stdDev);
-      samples.push(randomValue);
+      const randomValue = rand.normalDist(mean, stdDev)
+      samples.push(randomValue)
     }
 
-    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples;
-    const sampleVariance = samples.reduce((sum, value) => sum + ((value - sampleMean) ** 2), 0) / numSamples;
-    const sampleStdDev = Math.sqrt(sampleVariance);
+    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
+    const sampleVariance = samples.reduce((sum, value) => sum + ((value - sampleMean) ** 2), 0) / numSamples
+    const sampleStdDev = Math.sqrt(sampleVariance)
 
     expect(sampleMean).closeTo(0, .015)
     expect(sampleStdDev).closeTo(1, .015)
@@ -151,5 +151,37 @@ describe('aimless', () => {
     capture.forEach((item) => {
       expect(testSequence).to.include(item)
     })
+  })
+  it('should produce a random number that follows an exponential distribution', () => {
+    const numSamples = 100000
+    const lambda = 0.5
+    const expectedMean = 1 / lambda
+    const samples = []
+
+    for (let i = 0; i < numSamples; i++) {
+      const randomValue = rand.exponentialDist(lambda)
+      samples.push(randomValue)
+    }
+
+    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
+
+    expect(sampleMean).closeTo(expectedMean, .01)
+  })
+  it('should allow users to pass custom distributions', () => {
+    const numSamples = 100000
+    const lambda = 0.5
+    const expectedMean = 1 / lambda
+    const samples = []
+    const exponentialDist = (num) => {
+      return -Math.log(1 - num) / lambda
+    }
+
+    for (let i = 0; i < numSamples; i++) {
+      const randomValue = rand.customDist(exponentialDist)
+      samples.push(randomValue)
+    }
+
+    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
+    expect(sampleMean).closeTo(expectedMean, .01)
   })
 })
