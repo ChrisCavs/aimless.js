@@ -8,7 +8,7 @@ The missing JS randomness library.
 
 Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function, but what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
 
-Aimless.js is the missing JS randomness library.  It's tiny (< 3kB), unopinionated, dependency-free, and provides a variety of helpful random number utilites.  Best of all, it's compatible with all your favorite PRNGs.
+Aimless.js is the missing JS randomness library.  It's tiny (< 6kB), unopinionated, dependency-free, and provides a variety of helpful random number utilites.  Best of all, it's compatible with all your favorite PRNGs.
 
 ## Getting Started
 
