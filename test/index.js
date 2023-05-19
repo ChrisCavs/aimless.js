@@ -34,6 +34,11 @@ describe('aimless', () => {
       expect(rand.floatRange(-100.01, -10.39)).lessThanOrEqual(-10.39).and.greaterThanOrEqual(-100.01)
     }
   })
+  it('should produce a random number between -1 and 1', () => {
+    for (let i = 0; i < 1000; i++) {
+      expect(rand.normal()).lessThanOrEqual(1).and.greaterThanOrEqual(-1)
+    }
+  })
   it('should produce a weighted random integer in the range', () => {
     for (let i = 0; i < 100; i++) {
       expect(rand.weighted(
@@ -107,6 +112,11 @@ describe('aimless', () => {
   })
   it('should produce a random boolean', () => {
     expect([true, false]).to.include(rand.bool())
+  })
+  it('should produce a sign (-1 or 1)', () => {
+    for (let i = 0; i < 100; i++) {
+      expect([-1, 1]).to.include(rand.sign())
+    }
   })
   it('should produce a random character in string', () => {
     const testStr = 'hello my name is'

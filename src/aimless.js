@@ -33,6 +33,10 @@ class Aimless {
         return this.engine() * (max - min) + min
     }
 
+    normal() {
+        return this.floatRange(-1, 1)
+    }
+
     oneOf(arr) {
         return arr[this.intRange(0, arr.length - 1)]
     }
@@ -59,6 +63,10 @@ class Aimless {
 
     bool() {
         return !!this.intRange(0,1)
+    }
+
+    sign() {
+        return this.bool() ? 1 : -1
     }
 
     char(str) {
@@ -105,6 +113,15 @@ class Aimless {
         const rand = mean + (stdDev * u * t)
 
         return rand
+    }
+
+    uuid() {
+        // Returns a valid RFC4122 version4 ID hex string
+        // Credit @Alexey Silin from https://gist.github.com/1308368
+        var a = '';
+        var b = '';
+        for (b = a = ''; a++ < 36; b += ~a % 5 | a * 3 & 4 ? (a ^ 15 ? 8 ^ this.engine() * (a ^ 20 ? 16 : 4) : 4).toString(16) : '-') {}
+        return b;
     }
 
     static seedFunc(seed) {
