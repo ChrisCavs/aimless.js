@@ -1,6 +1,6 @@
 {
   "name": "aimless",
-  "description": "",
+  "description": "The missing JS randomness library.",
   "main": "dist/aimless.js",
   "module": "dist/aimless.module.js",
   "jsnext:main": "dist/aimless.module.js",
@@ -21,7 +21,16 @@
     "server": "python -m SimpleHTTPServer 3000",
     "test": "mocha"
   },
-  "keywords": [],
+  "keywords": [
+    "aimless",
+    "random",
+    "js random",
+    "range",
+    "sequence",
+    "weighted",
+    "distribution",
+    "seeded"
+  ],
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.34",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.34",
