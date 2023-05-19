@@ -1,5 +1,5 @@
 {
-  "name": "aimless",
+  "name": "aimless.js",
   "description": "The missing JS randomness library.",
   "main": "dist/aimless.js",
   "module": "dist/aimless.module.js",
@@ -23,6 +23,7 @@
   },
   "keywords": [
     "aimless",
+    "aimless.js",
     "random",
     "js random",
     "range",
