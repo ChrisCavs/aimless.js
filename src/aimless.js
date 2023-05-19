@@ -21,26 +21,50 @@ class Aimless {
         this.engine = engine
     }
 
+    /**
+     * Call the provided engine
+     */
     call() {
         return this.engine()
     }
 
+    /**
+     * Returns a random number within the integer range
+     * @param min Minimum integer
+     * @param max Maximum integer
+     */
     intRange(min, max) {
         return randIntRange(min, max, this.engine)
     }
 
+    /**
+     * Returns a random number within the float range
+     * @param min Minimum value
+     * @param max Maximum value
+     */
     floatRange(min, max) {
         return this.engine() * (max - min) + min
     }
 
+    /**
+     * Returns a random number between -1 and 1
+     */
     normal() {
         return this.floatRange(-1, 1)
     }
 
+    /**
+     * Returns a random value from the provided array
+     * @param arr Array of values
+     */
     oneOf(arr) {
         return arr[this.intRange(0, arr.length - 1)]
     }
 
+    /**
+     * Returns a new array with randomized order
+     * @param arr Array of values
+     */
     sequence(arr) {
         const result = []
         let tempArr = arr
@@ -55,24 +79,44 @@ class Aimless {
         return result
     }
 
+    /**
+     * Returns an array with every value in the range in random order
+     * @param min Minimum value
+     * @param max Maximum value
+     */
     intSequence(min, max) {
         return this.sequence(
             generateListFromRange(min, max)
         )
     }
 
+    /**
+     * Returns a random boolean (true or false)
+     */
     bool() {
         return !!this.intRange(0,1)
     }
 
+    /**
+     * Returns a random sign (-1 or 1)
+     */
     sign() {
         return this.bool() ? 1 : -1
     }
 
+    /**
+     * Returns a random character from the provided array
+     * @param str String
+     */
     char(str) {
         return str[this.intRange(0, str.length - 1)]
     }
 
+    /**
+     * Returns a random value from the provided array, biased towards provided weights
+     * @param nums Array of numbers (integer or float)
+     * @param weights Array of weights (integer or float)
+     */
     weighted(nums, weights) {
         if (nums.length !== weights.length) {
             throw new Error(
@@ -99,6 +143,11 @@ class Aimless {
         return nums[selectedIndex]
     }
 
+    /**
+     * Returns a random value that follows a normal distribution
+     * @param mean Mean
+     * @param stdDev Standard Deviation
+     */
     normalDist(mean, stdDev) {
         // Box-Muller transform
         let u, v, s
@@ -115,16 +164,26 @@ class Aimless {
         return rand
     }
 
+    /**
+     * Returns a random value that follows an exponential distribution
+     * @param lambda Lambda
+     */
     exponentialDist(lambda) {
         return -Math.log(1 - this.engine()) / lambda
     }
 
+    /**
+     * Returns a random value that follows a custom distribution
+     * @param func Distribution function that accepts a random number between 0 and 1
+     */
     customDist(func) {
         return func(this.engine())
     }
 
+    /**
+     * Returns a valid RFC4122 version4 ID hex string, using the provided engine
+     */
     uuid() {
-        // Returns a valid RFC4122 version4 ID hex string
         // Credit @Alexey Silin from https://gist.github.com/1308368
         var a = ''
         var b = ''
@@ -132,6 +191,10 @@ class Aimless {
         return b
     }
 
+    /**
+     * Returns a seeded PRNG function
+     * @param seed Seed (integer)
+     */
     static seedFunc(seed) {
         // Park-Miller PRNG
         let currentSeed = seed % 2147483647
@@ -142,6 +205,11 @@ class Aimless {
         }
     }
 
+    /**
+     * Returns a PRNG function that returns unique values from the provided array.
+     * @param arr Array of values to pull from
+     * @param engine Engine to be used as PRNG
+     */
     static uniqFuncSequence(arr, engine = Math.random) {
         let tempArr = arr
 
@@ -156,6 +224,12 @@ class Aimless {
         }
     }
 
+    /**
+     * Returns a PRNG function that returns unique values from the provided range.
+     * @param min Minimum
+     * @param max Maximum
+     * @param engine Engine to be used as PRNG
+     */
     static uniqFuncIntRange(min, max, engine = Math.random) {
         return this.uniqFuncSequence(
             generateListFromRange(min, max),

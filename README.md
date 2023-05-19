@@ -1,10 +1,12 @@
 # Aimless.js
 
+[![Aimless.js on NPM](https://img.shields.io/npm/v/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js) [![Aimless.js Downloads on NPM](https://img.shields.io/npm/dm/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js)
+
 The missing JS randomness library.
 
 ## Why?
 
-Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function.  But what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
+Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function, but what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
 
 Aimless.js is the missing JS randomness library.  It's tiny (< 3kB), unopinionated, dependency-free, and provides a variety of helpful random number utilites.  Best of all, it's compatible with all your favorite PRNGs.
 
@@ -33,7 +35,7 @@ import Aimless from 'aimless.js'
 ## Instantiate
 
 Create an instance, passing in your preferred engine (PRNG/RNG).  By default Aimless.js will use `Math.random` as the engine.
-**Note: any engine will work, as long as it returns a number between 0 and 1 inclusively**
+**Note: any engine that returns a number between 0 and 1 inclusively will work**
 
 ```es6
 // Default 
@@ -46,8 +48,26 @@ const aimless = new Aimless(prng)
 ## API
 
 Instance Methods
-* [.call()](#.call())
-* [.intRange(min, max)](#.intRange(min, max))
+* call
+* intRange
+* floatRange
+* normal
+* oneOf
+* sequence
+* intSequence
+* bool
+* sign
+* char
+* weighted
+* normalDist
+* exponentialDist
+* customDist
+* uuid
+
+Class Methods
+* seedFunc
+* uniqFuncSequence
+* uniqFuncIntRange
 
 ### .call()
 
