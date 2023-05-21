@@ -1,14 +1,16 @@
-# Aimless.js
+<img width="490" alt="Aimless.js" src="https://github.com/ChrisCavs/aimless.js/assets/32932937/9db1ddae-b7a4-47f1-a5e4-daee5761ecd1">
 
 [![Aimless.js on NPM](https://img.shields.io/npm/v/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js) [![Aimless.js Downloads on NPM](https://img.shields.io/npm/dm/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js)
 
 The missing JS randomness library.
 
+[Demo Page](https://chriscavs.github.io/aimless-demo/)
+
 ## Why?
 
 Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function, but what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
 
-Aimless.js is the missing JS randomness library.  It's tiny (< 6kB), unopinionated, dependency-free, and provides a variety of helpful random number utilites.  Best of all, it's compatible with all your favorite PRNGs.
+Aimless is the missing JS randomness library.  It's tiny (< 6kB), unopinionated, dependency-free, and provides a variety of helpful random number utilities.  Best of all, it's compatible with all your favorite PRNGs.
 
 ## Getting Started
 
