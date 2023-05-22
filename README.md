@@ -38,7 +38,7 @@ import { bool, intRange } from 'aimless.js'
 
 ## Using Custom PRNG
 
-Aimless.js is compatible with any custom PRNG that returns a number `num >= 0` and `num < 1`.  Every function accepts an `engine` to be used.  Every function will default to using the provided `defaultEngine` if no `engine` is provided.  The `defaultEngine` uses `crypto.getrandomvalues` when available, with a fallback of `Math.random`.
+Aimless.js is compatible with any custom PRNG that returns a number `num >= 0` and `num < 1`.  Every function accepts an `engine` to be used.
 
 ```es6
 import { bool } from 'aimless.js'
@@ -56,6 +56,8 @@ const engine = () => 0
 const bool = boolWithEngine(engine)
 bool() // false
 ```
+
+Every function will default to using the provided `defaultEngine` if no custom engine is provided.  The default engine uses `crypto.getrandomvalues` when available, with a fallback of `Math.random`.
 
 ## API
 
