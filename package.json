@@ -4,7 +4,7 @@
   "main": "dist/aimless.js",
   "module": "dist/aimless.module.js",
   "jsnext:main": "dist/aimless.module.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "repository": "ChrisCavs/aimless.js",
   "author": {

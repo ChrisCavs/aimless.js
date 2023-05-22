@@ -1,4 +1,4 @@
-import { generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils"
 
 /**
  * Returns a random value from the provided array, biased towards provided weights
@@ -6,7 +6,7 @@ import { generateCurry } from "./utils"
  * @param weights Array of weights (integer or float)
  * @param engine PRNG of choice
  */
-const weighted = (nums, weights, engine = Math.random) => {
+const weighted = (nums, weights, engine = defaultEngine) => {
   if (nums.length !== weights.length) {
     throw new Error('Every provided number must have a corresponding weight.')
   }

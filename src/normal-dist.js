@@ -1,4 +1,4 @@
-import { generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils"
 
 /**
  * Returns a random value that follows a normal distribution
@@ -6,7 +6,7 @@ import { generateCurry } from "./utils"
  * @param stdDev Standard Deviation
  * @param engine PRNG of choice
  */
-const normalDist = (mean, stdDev, engine = Math.random) => {
+const normalDist = (mean, stdDev, engine = defaultEngine) => {
   // Box-Muller transform
   let u, v, s
 

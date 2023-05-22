@@ -1,10 +1,10 @@
-import { generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils"
 
 /**
  * Returns a valid RFC4122 version4 ID hex string, using the provided engine
  * @param engine PRNG of choice
  */
-const uuid = (engine = Math.random) => {
+const uuid = (engine = defaultEngine) => {
   // Credit @Alexey Silin from https://gist.github.com/1308368
   var a = ''
   var b = ''

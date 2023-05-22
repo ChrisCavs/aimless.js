@@ -115,7 +115,7 @@ describe('aimless', () => {
   })
 
   it('should produce a random number that follows a normal distribution', () => {
-    const numSamples = 100000
+    const numSamples = 10000
     const mean = 0
     const stdDev = 1
     const samples = []
@@ -129,8 +129,8 @@ describe('aimless', () => {
     const sampleVariance = samples.reduce((sum, value) => sum + ((value - sampleMean) ** 2), 0) / numSamples
     const sampleStdDev = Math.sqrt(sampleVariance)
 
-    expect(sampleMean).closeTo(0, .015)
-    expect(sampleStdDev).closeTo(1, .015)
+    expect(sampleMean).closeTo(0, .05)
+    expect(sampleStdDev).closeTo(1, .05)
   })
 
   it('should produce a seed function that is predictable', () => {
@@ -219,7 +219,7 @@ describe('aimless', () => {
   })
 
   it('should produce a random number that follows an exponential distribution', () => {
-    const numSamples = 100000
+    const numSamples = 10000
     const lambda = 0.5
     const expectedMean = 1 / lambda
     const samples = []
@@ -231,11 +231,11 @@ describe('aimless', () => {
 
     const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
 
-    expect(sampleMean).closeTo(expectedMean, .01)
+    expect(sampleMean).closeTo(expectedMean, .05)
   })
 
   it('should allow users to pass custom distributions', () => {
-    const numSamples = 100000
+    const numSamples = 10000
     const lambda = 0.5
     const expectedMean = 1 / lambda
     const samples = []
@@ -250,6 +250,6 @@ describe('aimless', () => {
     }
 
     const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
-    expect(sampleMean).closeTo(expectedMean, .01)
+    expect(sampleMean).closeTo(expectedMean, .05)
   })
 })

@@ -1,4 +1,4 @@
-import { generateListFromRange } from './utils'
+import { defaultEngine, generateListFromRange } from './utils'
 import uniqFuncSequence from './uniq-func-sequence'
 
 /**
@@ -7,7 +7,7 @@ import uniqFuncSequence from './uniq-func-sequence'
  * @param max Maximum integer
  * @param engine Engine to be used as PRNG
  */
-const uniqFuncIntRange = (min, max, engine = Math.random) => {
+const uniqFuncIntRange = (min, max, engine = defaultEngine) => {
   return uniqFuncSequence(
     generateListFromRange(min, max),
     engine

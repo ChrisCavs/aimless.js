@@ -1,11 +1,11 @@
-import { generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils"
 
 /**
  * Returns a random value that follows an exponential distribution
  * @param lambda Lambda
  * @param engine PRNG of choice
  */
-const exponentialDist = (lambda, engine = Math.random) => {
+const exponentialDist = (lambda, engine = defaultEngine) => {
   return -Math.log(1 - engine()) / lambda
 }
 

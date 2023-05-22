@@ -1,11 +1,11 @@
-import { randIntRange, sliceOut } from './utils'
+import { defaultEngine, randIntRange, sliceOut } from './utils'
 
 /**
  * Returns a PRNG function that returns unique values from the provided array.
  * @param arr Array of values to pull from
  * @param engine Engine to be used as PRNG
  */
-const uniqFuncSequence = (arr, engine = Math.random) => {
+const uniqFuncSequence = (arr, engine = defaultEngine) => {
   let tempArr = arr
 
   return () => {

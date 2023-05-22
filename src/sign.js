@@ -1,11 +1,11 @@
 import { bool } from './bool'
-import { generateCurry } from './utils'
+import { defaultEngine, generateCurry } from './utils'
 
 /**
  * Returns a random sign (-1 or 1)
  * @param engine PRNG of choice
  */
-const sign = (engine = Math.random) => {
+const sign = (engine = defaultEngine) => {
   return bool(engine) ? 1 : -1
 }
 

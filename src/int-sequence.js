@@ -1,4 +1,4 @@
-import { generateCurry, generateListFromRange } from './utils'
+import { defaultEngine, generateCurry, generateListFromRange } from './utils'
 import { sequence } from './sequence'
 
 /**
@@ -7,7 +7,7 @@ import { sequence } from './sequence'
  * @param max Maximum value
  * @param engine PRNG of choice
  */
-const intSequence = (min, max, engine = Math.random) => {
+const intSequence = (min, max, engine = defaultEngine) => {
   return sequence(
     generateListFromRange(min, max),
     engine

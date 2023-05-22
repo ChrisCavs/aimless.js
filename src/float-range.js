@@ -1,4 +1,4 @@
-import { generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils"
 
 /**
  * Returns a random number within the float range
@@ -6,7 +6,7 @@ import { generateCurry } from "./utils"
  * @param max Maximum value
  * @param engine PRNG of choice
  */
-const floatRange = (min, max, engine = Math.random) => {
+const floatRange = (min, max, engine = defaultEngine) => {
   return engine() * (max - min) + min
 }
 

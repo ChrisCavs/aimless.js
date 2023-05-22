@@ -36,7 +36,7 @@ import { bool, intRange } from 'aimless.js'
 
 ## Using Custom PRNG
 
-Aimless.js is compatible with any custom PRNG that returns a number between 0 and 1 inclusively.  Every function accepts an `engine` to be used.  Every function will default to using `Math.random` if no `engine` is provided.
+Aimless.js is compatible with any custom PRNG that returns a number `num >= 0` and `num < 1`.  Every function accepts an `engine` to be used.  Every function will default to using the provided `defaultEngine` if no `engine` is provided.  The `defaultEngine` uses `crypto.getrandomvalues` when available, with a fallback of `Math.random`.
 
 ```es6
 import { bool } from 'aimless.js'
@@ -200,7 +200,7 @@ Returns either `-1` or `1`.
 
 ### uniqFuncIntRange(min, max, engine)
 
-Returns a **unique** random number between `min` and `max`, using the provided `engine`.  If no `engine` is passed, `Math.random` will be used.  If there are no unique values left to return, `null` will be returned.
+Returns a **unique** random number between `min` and `max`, using the provided `engine`.  If no `engine` is passed, the defaultEngine will be used.  If there are no unique values left to return, `null` will be returned.
 
 ```es6
 const uniqueRNG = uniqFuncIntRange(1, 3)
@@ -212,7 +212,7 @@ uniqueRNG() // null
 
 ### uniqFuncSequence(array, engine)
 
-Returns a **unique** random number from the provided `array`, using the provided `engine`.  If no `engine` is passed, `Math.random` will be used.  If there are no unique values left to return, `null` will be returned.
+Returns a **unique** random number from the provided `array`, using the provided `engine`.  If no `engine` is passed, the defaultEngine will be used.  If there are no unique values left to return, `null` will be returned.
 
 ```es6
 const uniqueRNG = uniqFuncSequence([10, 20, 30])
