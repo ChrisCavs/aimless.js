@@ -8,6 +8,10 @@ The missing JS randomness library.
 
 [Demo Page](https://chriscavs.github.io/aimless-demo/)
 
+![image](https://github.com/ChrisCavs/aimless.js/assets/32932937/33055db1-6d2e-4993-93ba-f5c05b6f38c9)
+![image](https://github.com/ChrisCavs/aimless.js/assets/32932937/b0809c08-8cf3-4326-a26b-4baa90ef4d70)
+
+
 ## Why?
 
 Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function, but what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
