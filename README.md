@@ -4,6 +4,8 @@
 
 The missing JS randomness library.
 
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Aimless.js%20the%20missing%20JS%20randomness%20library&url=https://github.com/ChrisCavs/aimless.js&hashtags=javascript,random,developers,frontend)
+
 [Demo Page](https://chriscavs.github.io/aimless-demo/)
 
 ## Why?
