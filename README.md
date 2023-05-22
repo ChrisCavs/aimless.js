@@ -1,12 +1,8 @@
 <img width="490" alt="Aimless.js" src="https://github.com/ChrisCavs/aimless.js/assets/32932937/9db1ddae-b7a4-47f1-a5e4-daee5761ecd1">
 
-[![Aimless.js on NPM](https://img.shields.io/npm/v/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js) [![Aimless.js Downloads on NPM](https://img.shields.io/npm/dm/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js)
+[![Aimless.js on NPM](https://img.shields.io/npm/v/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js) [![Aimless.js Downloads on NPM](https://img.shields.io/npm/dm/aimless.js.svg?style=flat-square)](https://www.npmjs.com/package/aimless.js) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Aimless.js%20the%20missing%20JS%20randomness%20library&url=https://github.com/ChrisCavs/aimless.js&hashtags=javascript,random,developers,frontend)
 
-The missing JS randomness library.
-
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Aimless.js%20the%20missing%20JS%20randomness%20library&url=https://github.com/ChrisCavs/aimless.js&hashtags=javascript,random,developers,frontend)
-
-[Demo Page](https://chriscavs.github.io/aimless-demo/)
+The missing JS randomness library.  [See a demo](https://chriscavs.github.io/aimless-demo/).
 
 ![image](https://github.com/ChrisCavs/aimless.js/assets/32932937/33055db1-6d2e-4993-93ba-f5c05b6f38c9)
 ![image](https://github.com/ChrisCavs/aimless.js/assets/32932937/b0809c08-8cf3-4326-a26b-4baa90ef4d70)
