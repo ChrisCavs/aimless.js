@@ -45,7 +45,7 @@ const engine = () => 0
 bool(engine) // false
 ```
 
-Additionally, every function in aimless has a counterpart named `withEngine`.  This function will return its counterpart with a closure around your engine, so you don't need to pass it every time.
+Additionally, every function in Aimless has a counterpart named `withEngine`.  This function will return its counterpart with a closure around your engine, so you don't need to pass it every time.
 
 ```es6
 import { boolWithEngine } from 'aimless.js'

@@ -2,14 +2,14 @@ const defaultEngine = () => {
   try {
     // Credit @ Tamás Sallai
     const crypto = window.crypto || window.msCrypto
-    const buffer = new ArrayBuffer(8);
-    const ints = new Int8Array(buffer);
-    crypto.getRandomValues(ints);
+    const buffer = new ArrayBuffer(8)
+    const ints = new Int8Array(buffer)
+    crypto.getRandomValues(ints)
 
-    ints[7] = 63;
-    ints[6] |= 0xf0;
+    ints[7] = 63
+    ints[6] |= 0xf0
 
-    return new DataView(buffer).getFloat64(0, true) - 1;
+    return new DataView(buffer).getFloat64(0, true) - 1
   } catch (e) {
     return Math.random()
   }
