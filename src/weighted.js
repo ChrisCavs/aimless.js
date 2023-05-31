@@ -1,4 +1,4 @@
-import { defaultEngine, generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils.js"
 
 /**
  * Returns a random value from the provided array, biased towards provided weights

@@ -1,5 +1,5 @@
-import { floatRange } from './float-range'
-import { defaultEngine, generateCurry } from './utils'
+import { floatRange } from './float-range.js'
+import { defaultEngine, generateCurry } from './utils.js'
 
 /**
  * Returns a random number between -1 and 1

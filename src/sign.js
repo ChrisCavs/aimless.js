@@ -1,5 +1,5 @@
-import { bool } from './bool'
-import { defaultEngine, generateCurry } from './utils'
+import { bool } from './bool.js'
+import { defaultEngine, generateCurry } from './utils.js'
 
 /**
  * Returns a random sign (-1 or 1)

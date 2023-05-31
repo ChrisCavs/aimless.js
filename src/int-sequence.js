@@ -1,5 +1,5 @@
-import { defaultEngine, generateCurry, generateListFromRange } from './utils'
-import { sequence } from './sequence'
+import { defaultEngine, generateCurry, generateListFromRange } from './utils.js'
+import { sequence } from './sequence.js'
 
 /**
  * Returns an array with every value in the range in random order

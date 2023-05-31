@@ -1,5 +1,5 @@
-import { intRange } from './int-range'
-import { defaultEngine, generateCurry, sliceOut } from './utils'
+import { intRange } from './int-range.js'
+import { defaultEngine, generateCurry, sliceOut } from './utils.js'
 
 /**
  * Returns a new array with randomized order

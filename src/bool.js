@@ -1,5 +1,5 @@
-import { intRange } from './int-range'
-import { defaultEngine, generateCurry } from './utils'
+import { intRange } from './int-range.js'
+import { defaultEngine, generateCurry } from './utils.js'
 
 /**
  * Returns a random boolean (true or false)

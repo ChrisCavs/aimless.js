@@ -1,4 +1,4 @@
-import { defaultEngine, generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils.js"
 
 /**
  * Returns a valid RFC4122 version4 ID hex string, using the provided engine

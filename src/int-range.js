@@ -1,4 +1,4 @@
-import { defaultEngine, generateCurry, randIntRange } from './utils'
+import { defaultEngine, generateCurry, randIntRange } from './utils.js'
 
 /**
  * Returns a random number within the integer range

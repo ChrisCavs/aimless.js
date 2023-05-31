@@ -1,4 +1,4 @@
-import { defaultEngine, randIntRange, sliceOut } from './utils'
+import { defaultEngine, randIntRange, sliceOut } from './utils.js'
 
 /**
  * Returns a PRNG function that returns unique values from the provided array.

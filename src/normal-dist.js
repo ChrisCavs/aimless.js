@@ -1,4 +1,4 @@
-import { defaultEngine, generateCurry } from "./utils"
+import { defaultEngine, generateCurry } from "./utils.js"
 
 /**
  * Returns a random value that follows a normal distribution
