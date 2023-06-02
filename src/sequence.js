@@ -3,8 +3,8 @@ import { defaultEngine, generateCurry, sliceOut } from './utils.js'
 
 /**
  * Returns a new array with randomized order
- * @param arr Array of values
- * @param engine PRNG of choice
+ * @param {number[]} arr Array of values
+ * @param {() => number} engine PRNG of choice
  */
 const sequence = (arr, engine = defaultEngine) => {
   const result = []
