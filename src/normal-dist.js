@@ -1,10 +1,11 @@
-import { defaultEngine, generateCurry } from "./utils.js"
+import { defaultEngine } from "./utils.js"
 
 /**
  * Returns a random value that follows a normal distribution
- * @param mean Mean
- * @param stdDev Standard Deviation
- * @param engine PRNG of choice
+ * @param {number} mean Mean
+ * @param {number} stdDev Standard Deviation
+ * @param {() => number} engine PRNG of choice
+ * @returns {number}
  */
 const normalDist = (mean, stdDev, engine = defaultEngine) => {
   // Box-Muller transform
@@ -22,7 +23,13 @@ const normalDist = (mean, stdDev, engine = defaultEngine) => {
   return rand
 }
 
-const normalDistWithEngine = generateCurry(normalDist)
+/**
+ * @param {() => number} engine PRNG of choice
+ * @returns {(mean: number, stdDev: number) => number}
+ */
+const normalDistWithEngine = (engine = defaultEngine) => {
+  return (mean, stdDev) => normalDist(mean, stdDev, engine)
+}
 
 export {
   normalDist,

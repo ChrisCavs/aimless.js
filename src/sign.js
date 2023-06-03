@@ -1,15 +1,22 @@
 import { bool } from './bool.js'
-import { defaultEngine, generateCurry } from './utils.js'
+import { defaultEngine } from './utils.js'
 
 /**
  * Returns a random sign (-1 or 1)
- * @param engine PRNG of choice
+ * @param {() => number} engine PRNG of choice
+ * @returns {number}
  */
 const sign = (engine = defaultEngine) => {
   return bool(engine) ? 1 : -1
 }
 
-const signWithEngine = generateCurry(sign)
+/**
+ * @param {() => number} engine PRNG of choice
+ * @returns {() => number}
+ */
+const signWithEngine = (engine = defaultEngine) => {
+  return () => sign(engine)
+}
 
 export {
   sign,

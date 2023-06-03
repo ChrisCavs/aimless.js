@@ -1,16 +1,23 @@
-import { defaultEngine, generateCurry } from "./utils.js"
+import { defaultEngine } from "./utils.js"
 
 /**
  * Returns a random number within the float range
- * @param min Minimum value
- * @param max Maximum value
- * @param engine PRNG of choice
+ * @param {number} min Minimum value
+ * @param {number} max Maximum value
+ * @param {() => number} engine PRNG of choice
+ * @returns {number}
  */
 const floatRange = (min, max, engine = defaultEngine) => {
   return engine() * (max - min) + min
 }
 
-const floatRangeWithEngine = generateCurry(floatRange)
+/**
+ * @param {() => number} engine PRNG of choice
+ * @returns {(min: number, max: number) => number}
+ */
+const floatRangeWithEngine = (engine = defaultEngine) => {
+  return (min, max) => floatRange(min, max, engine)
+}
 
 export {
   floatRange,

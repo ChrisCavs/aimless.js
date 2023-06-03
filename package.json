@@ -4,7 +4,7 @@
   "main": "dist/aimless.js",
   "module": "dist/aimless.module.js",
   "jsnext:main": "dist/aimless.module.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "repository": "ChrisCavs/aimless.js",
   "author": {
@@ -19,7 +19,8 @@
     "prepublish": "npm run test",
     "pretest": "npm run build",
     "server": "python -m SimpleHTTPServer 3000",
-    "test": "mocha"
+    "test": "mocha",
+    "typegen": "tsc ./src/aimless.js --allowJs --declaration --emitDeclarationOnly --declarationMap --outDir types"
   },
   "keywords": [
     "aimless",

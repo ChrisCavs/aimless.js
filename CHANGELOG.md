@@ -1,3 +1,6 @@
+## 1.0.3
+* add jSDoc types, improve sequence performance.
+
 ## 1.0.2
 * add file extensions with import syntax.
 

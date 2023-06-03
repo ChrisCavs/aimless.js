@@ -1,10 +1,11 @@
-import { defaultEngine, generateCurry } from "./utils.js"
+import { defaultEngine } from "./utils.js"
 
 /**
  * Returns a random value from the provided array, biased towards provided weights
- * @param nums Array of numbers (integer or float)
- * @param weights Array of weights (integer or float)
- * @param engine PRNG of choice
+ * @param {number[]} nums Array of numbers (integer or float)
+ * @param {number[]} weights Array of weights (integer or float)
+ * @param {() => number} engine PRNG of choice
+ * @returns {number}
  */
 const weighted = (nums, weights, engine = defaultEngine) => {
   if (nums.length !== weights.length) {
@@ -32,7 +33,14 @@ const weighted = (nums, weights, engine = defaultEngine) => {
   return nums[selectedIndex]
 }
 
-const weightWithEngine = generateCurry(weighted)
+/**
+ * 
+ * @param {() => number} engine PRNG of choice
+ * @returns {(nums: number[], weights: number[]) => number}
+ */
+const weightWithEngine = (engine = defaultEngine) => {
+  return (nums, weights) => weighted(nums, weights, engine)
+}
 
 export {
   weighted,

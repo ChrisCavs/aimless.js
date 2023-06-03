@@ -1,6 +1,7 @@
 /**
  * Returns a seeded PRNG function
- * @param seed Seed (integer)
+ * @param {number} seed Seed
+ * @returns {() => number}
  */
 const seedFunc = (seed) => {
   // Park-Miller PRNG

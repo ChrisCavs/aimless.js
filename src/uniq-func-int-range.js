@@ -3,9 +3,10 @@ import uniqFuncSequence from './uniq-func-sequence.js'
 
 /**
  * Returns a PRNG function that returns unique values from the provided range.
- * @param min Minimum integer
- * @param max Maximum integer
- * @param engine Engine to be used as PRNG
+ * @param {number} min Minimum integer
+ * @param {number} max Maximum integer
+ * @param {() => number} engine Engine to be used as PRNG
+ * @returns {() => number}
  */
 const uniqFuncIntRange = (min, max, engine = defaultEngine) => {
   return uniqFuncSequence(
