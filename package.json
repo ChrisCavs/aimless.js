@@ -38,10 +38,13 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.34",
     "@babel/preset-env": "^7.0.0-beta.34",
     "chai": "^4.1.2",
+    "glob": "^10.2.6",
     "mocha": "^4.0.1",
-    "rollup": "^0.52.1",
+    "rollup": "^3.23.0",
     "rollup-plugin-babel": "^4.0.0-beta.0",
+    "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "typescript": "^5.1.3"
   }
 }
