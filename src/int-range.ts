@@ -1,4 +1,4 @@
-import { defaultEngine, generateCurry, randIntRange } from './utils.js'
+import { defaultEngine, generateCurry, randIntRange } from './utils'
 
 /**
  * Returns a random number within the integer range
@@ -6,13 +6,10 @@ import { defaultEngine, generateCurry, randIntRange } from './utils.js'
  * @param max Maximum integer
  * @param engine PRNG of choice
  */
-const intRange = (min, max, engine = defaultEngine) => {
+const intRange = (min: number, max: number, engine = defaultEngine): number => {
   return randIntRange(min, max, engine)
 }
 
 const intRangeWithEngine = generateCurry(intRange)
 
-export {
-    intRange,
-    intRangeWithEngine
-}
+export { intRange, intRangeWithEngine }
