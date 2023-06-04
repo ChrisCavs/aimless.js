@@ -1,12 +1,5 @@
-import { defaultEngine } from "./utils.js"
+import { defaultEngine } from "./utils"
 
-/**
- * Returns a random value that follows a normal distribution
- * @param {number} mean Mean
- * @param {number} stdDev Standard Deviation
- * @param {() => number} engine PRNG of choice
- * @returns {number}
- */
 const normalDist = (mean, stdDev, engine = defaultEngine) => {
   // Box-Muller transform
   let u, v, s
@@ -23,10 +16,6 @@ const normalDist = (mean, stdDev, engine = defaultEngine) => {
   return rand
 }
 
-/**
- * @param {() => number} engine PRNG of choice
- * @returns {(mean: number, stdDev: number) => number}
- */
 const normalDistWithEngine = (engine = defaultEngine) => {
   return (mean, stdDev) => normalDist(mean, stdDev, engine)
 }

@@ -1,11 +1,5 @@
-import { defaultEngine, randIntRange, sliceOut } from './utils.js'
+import { defaultEngine, randIntRange, sliceOut } from './utils'
 
-/**
- * Returns a new array with randomized order
- * @param {*[]} arr Array of values
- * @param {() => number} engine PRNG of choice
- * @returns {*[]}
- */
 const sequence = (arr, engine = defaultEngine) => {
   const result = []
 
@@ -21,10 +15,6 @@ const sequence = (arr, engine = defaultEngine) => {
   return result
 }
 
-/**
- * @param {() => number} engine PRNG of choice
- * @returns {(arr: *[]) => *[]}
- */
 const sequenceWithEngine = (engine = defaultEngine) => {
   return (arr) => sequence(arr, engine)
 }

@@ -1,8 +1,3 @@
-/**
- * Returns a seeded PRNG function
- * @param {number} seed Seed
- * @returns {() => number}
- */
 const seedFunc = (seed) => {
   // Park-Miller PRNG
   let currentSeed = seed % 2147483647

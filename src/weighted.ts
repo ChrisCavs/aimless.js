@@ -1,12 +1,5 @@
-import { defaultEngine } from "./utils.js"
+import { defaultEngine } from "./utils"
 
-/**
- * Returns a random value from the provided array, biased towards provided weights
- * @param {number[]} nums Array of numbers (integer or float)
- * @param {number[]} weights Array of weights (integer or float)
- * @param {() => number} engine PRNG of choice
- * @returns {number}
- */
 const weighted = (nums, weights, engine = defaultEngine) => {
   if (nums.length !== weights.length) {
     throw new Error('Every provided number must have a corresponding weight.')
@@ -33,11 +26,6 @@ const weighted = (nums, weights, engine = defaultEngine) => {
   return nums[selectedIndex]
 }
 
-/**
- * 
- * @param {() => number} engine PRNG of choice
- * @returns {(nums: number[], weights: number[]) => number}
- */
 const weightWithEngine = (engine = defaultEngine) => {
   return (nums, weights) => weighted(nums, weights, engine)
 }
