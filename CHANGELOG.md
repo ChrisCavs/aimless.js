@@ -1,5 +1,5 @@
-## 1.0.3
-* add jSDoc types, improve sequence performance.
+## 1.0.3-beta.0
+* add jSDoc types, adjust rollup config to produce types in dist.
 
 ## 1.0.2
 * add file extensions with import syntax.
