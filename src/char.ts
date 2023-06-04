@@ -1,12 +1,12 @@
 import { intRange } from './int-range'
-import { defaultEngine } from './utils'
+import { Engine, defaultEngine } from './utils'
 
-const char = (str, engine = defaultEngine) => {
+const char = (str: string, engine: Engine = defaultEngine): string => {
   return str[intRange(0, str.length - 1, engine)]
 }
 
-const charWithEngine = (engine = defaultEngine) => {
-  return (str) => char(str, engine)
+const charWithEngine = (engine: Engine = defaultEngine) => {
+  return (str: string) => char(str, engine)
 }
 
 export {

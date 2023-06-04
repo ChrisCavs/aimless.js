@@ -1,11 +1,11 @@
 import { bool } from './bool'
-import { defaultEngine } from './utils'
+import { Engine, defaultEngine } from './utils'
 
-const sign = (engine = defaultEngine) => {
+const sign = (engine: Engine = defaultEngine): 1 | -1 => {
   return bool(engine) ? 1 : -1
 }
 
-const signWithEngine = (engine = defaultEngine) => {
+const signWithEngine = (engine: Engine = defaultEngine) => {
   return () => sign(engine)
 }
 

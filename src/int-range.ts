@@ -1,11 +1,11 @@
-import { defaultEngine, randIntRange } from './utils'
+import { Engine, defaultEngine, randIntRange } from './utils'
 
-const intRange = (min, max, engine = defaultEngine) => {
+const intRange = (min: number, max: number, engine: Engine = defaultEngine): number => {
   return randIntRange(min, max, engine)
 }
 
 const intRangeWithEngine = (engine = defaultEngine) => {
-  return (min, max) => intRange(min, max, engine)
+  return (min: number, max: number) => intRange(min, max, engine)
 }
 
 export {

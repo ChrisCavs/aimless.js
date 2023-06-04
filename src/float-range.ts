@@ -1,11 +1,11 @@
-import { defaultEngine } from "./utils"
+import { Engine, defaultEngine } from "./utils"
 
-const floatRange = (min, max, engine = defaultEngine) => {
+const floatRange = (min: number, max: number, engine: Engine = defaultEngine): number => {
   return engine() * (max - min) + min
 }
 
 const floatRangeWithEngine = (engine = defaultEngine) => {
-  return (min, max) => floatRange(min, max, engine)
+  return (min: number, max: number) => floatRange(min, max, engine)
 }
 
 export {

@@ -1,12 +1,12 @@
 import { intRange } from './int-range'
-import { defaultEngine } from './utils'
+import { Engine, defaultEngine } from './utils'
 
-const oneOf = (arr, engine = defaultEngine) => {
+const oneOf = <T>(arr: T[], engine: Engine = defaultEngine): T => {
   return arr[intRange(0, arr.length - 1, engine)]
 }
 
-const oneOfWithEngine = (engine = defaultEngine) => {
-  return (arr) => oneOf(arr, engine)
+const oneOfWithEngine = <T>(engine: Engine = defaultEngine) => {
+  return (arr: T[]) => oneOf(arr, engine)
 }
 
 export {

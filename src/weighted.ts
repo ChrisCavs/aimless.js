@@ -1,6 +1,6 @@
-import { defaultEngine } from "./utils"
+import { Engine, defaultEngine } from "./utils"
 
-const weighted = (nums, weights, engine = defaultEngine) => {
+const weighted = (nums: number[], weights: number[], engine: Engine = defaultEngine): number => {
   if (nums.length !== weights.length) {
     throw new Error('Every provided number must have a corresponding weight.')
   }
@@ -27,7 +27,7 @@ const weighted = (nums, weights, engine = defaultEngine) => {
 }
 
 const weightWithEngine = (engine = defaultEngine) => {
-  return (nums, weights) => weighted(nums, weights, engine)
+  return (nums: number[], weights: number[]) => weighted(nums, weights, engine)
 }
 
 export {

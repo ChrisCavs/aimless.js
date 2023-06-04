@@ -1,11 +1,11 @@
-import { defaultEngine } from "./utils"
+import { Engine, defaultEngine } from "./utils"
 
-const exponentialDist = (lambda, engine = defaultEngine) => {
+const exponentialDist = (lambda: number, engine: Engine = defaultEngine): number => {
   return -Math.log(1 - engine()) / lambda
 }
 
-const exponentialDistWithEngine = (engine = defaultEngine) => {
-  return (lambda) => exponentialDist(lambda, engine)
+const exponentialDistWithEngine = (engine: Engine = defaultEngine) => {
+  return (lambda: number) => exponentialDist(lambda, engine)
 }
 
 export {

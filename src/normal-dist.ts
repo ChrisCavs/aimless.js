@@ -1,6 +1,6 @@
-import { defaultEngine } from "./utils"
+import { Engine, defaultEngine } from "./utils"
 
-const normalDist = (mean, stdDev, engine = defaultEngine) => {
+const normalDist = (mean: number, stdDev: number, engine: Engine = defaultEngine): number => {
   // Box-Muller transform
   let u, v, s
 
@@ -17,7 +17,7 @@ const normalDist = (mean, stdDev, engine = defaultEngine) => {
 }
 
 const normalDistWithEngine = (engine = defaultEngine) => {
-  return (mean, stdDev) => normalDist(mean, stdDev, engine)
+  return (mean: number, stdDev: number) => normalDist(mean, stdDev, engine)
 }
 
 export {

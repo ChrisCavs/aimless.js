@@ -1,6 +1,6 @@
-import { defaultEngine, randIntRange, sliceOut } from './utils'
+import { Engine, defaultEngine, randIntRange, sliceOut } from './utils'
 
-const uniqFuncSequence = (arr, engine = defaultEngine) => {
+const uniqFuncSequence = <T>(arr: T[], engine: Engine = defaultEngine): () => (T | null) => {
   let tempArr = arr
 
   return () => {

@@ -1,4 +1,6 @@
-const defaultEngine = () => {
+export type Engine = () => number
+
+const defaultEngine = (): number => {
   try {
     // Credit @ Tamás Sallai
     const crypto = window.crypto
@@ -15,8 +17,8 @@ const defaultEngine = () => {
   }
 }
 
-const generateListFromRange = (min, max) => {
-  const result = []
+const generateListFromRange = (min: number, max: number): number[] => {
+  const result: number[] = []
 
   for (let i = min; i <= max; i++) {
     result.push(i)
@@ -25,14 +27,14 @@ const generateListFromRange = (min, max) => {
   return result
 }
 
-const randIntRange = (i, j, engine = defaultEngine) => {
+const randIntRange = (i: number, j: number, engine: Engine = defaultEngine): number => {
   const min = Math.ceil(i)
   const max = Math.floor(j)
 
   return Math.floor(engine() * (max - min + 1)) + min
 }
 
-const sliceOut = (arr, i) => {
+const sliceOut = <T>(arr: T[], i: number): T[] => {
   return arr.slice(0, i).concat(arr.slice(i + 1))
 }
 

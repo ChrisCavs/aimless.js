@@ -1,6 +1,6 @@
-import { defaultEngine } from "./utils.js"
+import { Engine, defaultEngine } from "./utils.js"
 
-const uuid = (engine: () => number = defaultEngine): string => {
+const uuid = (engine: Engine = defaultEngine): string => {
   // Credit @Alexey Silin from https://gist.github.com/1308368
   let a: any = ''
   let b: any = ''
@@ -9,7 +9,7 @@ const uuid = (engine: () => number = defaultEngine): string => {
   return b
 }
 
-const uuidWithEngine = (engine: () => number = defaultEngine) => {
+const uuidWithEngine = (engine: Engine = defaultEngine) => {
   return () => uuid(engine)
 }
 
