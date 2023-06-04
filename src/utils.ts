@@ -1,7 +1,13 @@
-const defaultEngine = () => {
+declare global {
+  interface Window {
+    msCrypto: Window['crypto']
+  }
+}
+
+const defaultEngine = (): number => {
   try {
     // Credit @ Tamás Sallai
-    const crypto = window.crypto || window.msCrypto
+    const crypto = window.crypto ?? window.msCrypto
     const buffer = new ArrayBuffer(8)
     const ints = new Int8Array(buffer)
     crypto.getRandomValues(ints)
@@ -15,7 +21,7 @@ const defaultEngine = () => {
   }
 }
 
-const generateListFromRange = (min, max) => {
+const generateListFromRange = (min: number, max: number): number[] => {
   const result = []
 
   for (let i = min; i <= max; i++) {
@@ -25,20 +31,20 @@ const generateListFromRange = (min, max) => {
   return result
 }
 
-const randIntRange = (i, j, engine = defaultEngine) => {
+const randIntRange = (i: number, j: number, engine = defaultEngine): number => {
   const min = Math.ceil(i)
   const max = Math.floor(j)
 
   return Math.floor(engine() * (max - min + 1)) + min
 }
 
-const sliceOut = (arr, i) => {
+const sliceOut = <T>(arr: T[], i: number): T[] => {
   return arr.slice(0, i).concat(arr.slice(i + 1))
 }
 
-const generateCurry = (func) => {
+const generateCurry = <T extends (...args: any[]) => any>(func: T) => {
   return (engine = defaultEngine) => {
-    return (...args) => {
+    return (...args: Parameters<T>): ReturnType<T> => {
       return func(...args, engine)
     }
   }
@@ -49,5 +55,5 @@ export {
   randIntRange,
   sliceOut,
   generateCurry,
-  defaultEngine,
+  defaultEngine
 }

@@ -1,17 +1,17 @@
-import { defaultEngine, generateCurry } from "./utils.js"
+import { defaultEngine, generateCurry } from './utils'
 
 /**
  * Returns a random value that follows a custom distribution
  * @param func Distribution function that accepts a random number between 0 and 1
  * @param engine PRNG of choice
  */
-const customDist = (func, engine = defaultEngine) => {
+const customDist = (
+  func: (randomNumber: number) => number,
+  engine = defaultEngine
+): number => {
   return func(engine())
 }
 
 const customDistWithEngine = generateCurry(customDist)
 
-export {
-  customDist,
-  customDistWithEngine
-}
+export { customDist, customDistWithEngine }

@@ -1,12 +1,12 @@
-import { intRange } from './int-range.js'
-import { defaultEngine, generateCurry, sliceOut } from './utils.js'
+import { intRange } from './int-range'
+import { defaultEngine, generateCurry, sliceOut } from './utils'
 
 /**
  * Returns a new array with randomized order
  * @param arr Array of values
  * @param engine PRNG of choice
  */
-const sequence = (arr, engine = defaultEngine) => {
+const sequence = <T>(arr: T[], engine = defaultEngine): T[] => {
   const result = []
 
   let tempArr = arr
@@ -23,7 +23,4 @@ const sequence = (arr, engine = defaultEngine) => {
 
 const sequenceWithEngine = generateCurry(sequence)
 
-export {
-  sequence,
-  sequenceWithEngine
-}
+export { sequence, sequenceWithEngine }

@@ -1,6 +1,7 @@
-const expect = require('chai').expect
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import { describe, expect, it } from 'vitest'
 
-const {
+import {
   bool,
   boolWithEngine,
   char,
@@ -29,54 +30,68 @@ const {
   uniqFuncIntRange,
   weighted,
   weightWithEngine
-} = require('../dist/aimless')
+} from './index'
 
 /* eslint-env mocha */
 
 describe('aimless', () => {
   it('should generate curry functions with custom engine', () => {
-    const engine = () => 0
+    const engine = (): 0 => 0
     const bool = boolWithEngine(engine)
     expect(bool()).equal(false)
     const char = charWithEngine(engine)
     expect(char('abc')).equal('a')
     const customDist = customDistWithEngine(engine)
-    expect(customDist(rand => rand)).equal(0)
+    expect(customDist((rand) => rand)).equal(0)
     const exponential = exponentialDistWithEngine(engine)
     expect(exponential(1)).equal(-Math.log(1))
     const floatRange = floatRangeWithEngine(engine)
-    expect(floatRange(1,2)).equal(1)
+    expect(floatRange(1, 2)).equal(1)
     const intRange = intRangeWithEngine(engine)
-    expect(intRange(1,2)).equal(1)
+    expect(intRange(1, 2)).equal(1)
     const intSequence = intSequenceWithEngine(engine)
-    expect(intSequence(1,2)).include(1).and.include(2)
+    expect(intSequence(1, 2)).include(1).and.include(2)
     const normalFloat = normalFloatWithEngine(engine)
     expect(normalFloat()).equal(-1)
     const oneOf = oneOfWithEngine(engine)
-    expect(oneOf([1,2,3])).equal(1)
+    expect(oneOf([1, 2, 3])).equal(1)
     const sequence = sequenceWithEngine(engine)
-    expect(sequence([1,2])).include(1).and.include(2)
+    expect(sequence([1, 2]))
+      .include(1)
+      .and.include(2)
     const sign = signWithEngine(engine)
     expect(sign()).equal(-1)
     const weighted = weightWithEngine(engine)
-    expect(weighted([1,2], [1,1])).equal(1)
+    expect(weighted([1, 2], [1, 1])).equal(1)
   })
 
   it('should produce a random int in range', () => {
     for (let i = 0; i < 100; i++) {
       expect(intRange(23, 50)).lessThanOrEqual(50).and.greaterThanOrEqual(23)
       expect(intRange(0, 1)).lessThanOrEqual(1).and.greaterThanOrEqual(0)
-      expect(intRange(-20, 200)).lessThanOrEqual(200).and.greaterThanOrEqual(-20)
-      expect(intRange(-100, -10)).lessThanOrEqual(-10).and.greaterThanOrEqual(-100)
+      expect(intRange(-20, 200))
+        .lessThanOrEqual(200)
+        .and.greaterThanOrEqual(-20)
+      expect(intRange(-100, -10))
+        .lessThanOrEqual(-10)
+        .and.greaterThanOrEqual(-100)
     }
   })
 
   it('should produce a random float in range', () => {
     for (let i = 0; i < 100; i++) {
-      expect(floatRange(0.1, 0.2)).lessThanOrEqual(0.2).and.greaterThanOrEqual(0.1)
-      expect(floatRange(10.6, 20.2)).lessThanOrEqual(20.2).and.greaterThanOrEqual(10.6)
-      expect(floatRange(-20.11, 201.99)).lessThanOrEqual(201.99).and.greaterThanOrEqual(-20.11)
-      expect(floatRange(-100.01, -10.39)).lessThanOrEqual(-10.39).and.greaterThanOrEqual(-100.01)
+      expect(floatRange(0.1, 0.2))
+        .lessThanOrEqual(0.2)
+        .and.greaterThanOrEqual(0.1)
+      expect(floatRange(10.6, 20.2))
+        .lessThanOrEqual(20.2)
+        .and.greaterThanOrEqual(10.6)
+      expect(floatRange(-20.11, 201.99))
+        .lessThanOrEqual(201.99)
+        .and.greaterThanOrEqual(-20.11)
+      expect(floatRange(-100.01, -10.39))
+        .lessThanOrEqual(-10.39)
+        .and.greaterThanOrEqual(-100.01)
     }
   })
 
@@ -94,10 +109,10 @@ describe('aimless', () => {
 
   it('should produce a weighted random integer in the range', () => {
     for (let i = 0; i < 100; i++) {
-      expect(weighted(
-        [1, 2, 3, 4, 5, 6],
-        [1, 2, 3, 2, 1, 1]
-      )).to.be.within(1, 6)
+      expect(weighted([1, 2, 3, 4, 5, 6], [1, 2, 3, 2, 1, 1])).to.be.within(
+        1,
+        6
+      )
     }
   })
 
@@ -107,10 +122,10 @@ describe('aimless', () => {
 
   it('should produce a weighted random float in the range', () => {
     for (let i = 0; i < 100; i++) {
-      expect(weighted(
-        [1.5, 2.7, 3.2, 4.1, 5.0],
-        [1, 2, 3, 2, 1]
-      )).to.be.within(1.5, 5.0)
+      expect(weighted([1.5, 2.7, 3.2, 4.1, 5.0], [1, 2, 3, 2, 1])).to.be.within(
+        1.5,
+        5.0
+      )
     }
   })
 
@@ -118,24 +133,27 @@ describe('aimless', () => {
     const numSamples = 10000
     const mean = 0
     const stdDev = 1
-    const samples = []
+    const samples: number[] = []
 
     for (let i = 0; i < numSamples; i++) {
       const randomValue = normalDist(mean, stdDev)
       samples.push(randomValue)
     }
 
-    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
-    const sampleVariance = samples.reduce((sum, value) => sum + ((value - sampleMean) ** 2), 0) / numSamples
+    const sampleMean =
+      samples.reduce((sum, value) => sum + value, 0) / numSamples
+    const sampleVariance =
+      samples.reduce((sum, value) => sum + (value - sampleMean) ** 2, 0) /
+      numSamples
     const sampleStdDev = Math.sqrt(sampleVariance)
 
-    expect(sampleMean).closeTo(0, .05)
-    expect(sampleStdDev).closeTo(1, .05)
+    expect(sampleMean).closeTo(0, 0.05)
+    expect(sampleStdDev).closeTo(1, 0.05)
   })
 
   it('should produce a seed function that is predictable', () => {
     const func = seedFunc(1233)
-    const result = []
+    const result: number[] = []
 
     for (let i = 0; i < 10; i++) {
       result.push(func())
@@ -149,12 +167,12 @@ describe('aimless', () => {
   })
 
   it('should return a random item from a sequence', () => {
-    const testArr = [1,2,3,4,5]
+    const testArr = [1, 2, 3, 4, 5]
     expect(testArr).to.include(oneOf(testArr))
   })
 
   it('should produce a random array sequence', () => {
-    const testArr = [12,5,9,-20,5]
+    const testArr = [12, 5, 9, -20, 5]
     const resultArr = sequence(testArr)
 
     testArr.forEach((item) => {
@@ -163,8 +181,8 @@ describe('aimless', () => {
   })
 
   it('should produce a random integer sequence from range', () => {
-    const testArr = [1,2,3,4,5]
-    const resultArr = intSequence(1,5)
+    const testArr = [1, 2, 3, 4, 5]
+    const resultArr = intSequence(1, 5)
 
     testArr.forEach((item) => {
       expect(resultArr).to.include(item)
@@ -187,8 +205,8 @@ describe('aimless', () => {
   })
 
   it('should produce a unique function that accepts a sequence', () => {
-    const testSequence = [10,-20,3,750,'s']
-    const capture = []
+    const testSequence = [10, -20, 3, 750, 's']
+    const capture: Array<(typeof testSequence)[number] | null> = []
     const uniqRand = uniqFuncSequence(testSequence)
 
     for (let i = 0; i < testSequence.length; i++) {
@@ -203,9 +221,9 @@ describe('aimless', () => {
   })
 
   it('should produce a unique function that accepts a range', () => {
-    const testSequence = [1,2,3,4,5]
-    const capture = []
-    const uniqRand = uniqFuncIntRange(1,5)
+    const testSequence = [1, 2, 3, 4, 5]
+    const capture: Array<(typeof testSequence)[number] | null> = []
+    const uniqRand = uniqFuncIntRange(1, 5)
 
     for (let i = 0; i < testSequence.length; i++) {
       capture.push(uniqRand())
@@ -222,25 +240,26 @@ describe('aimless', () => {
     const numSamples = 10000
     const lambda = 0.5
     const expectedMean = 1 / lambda
-    const samples = []
+    const samples: number[] = []
 
     for (let i = 0; i < numSamples; i++) {
       const randomValue = exponentialDist(lambda)
       samples.push(randomValue)
     }
 
-    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
+    const sampleMean =
+      samples.reduce((sum, value) => sum + value, 0) / numSamples
 
-    expect(sampleMean).closeTo(expectedMean, .05)
+    expect(sampleMean).closeTo(expectedMean, 0.05)
   })
 
   it('should allow users to pass custom distributions', () => {
     const numSamples = 10000
     const lambda = 0.5
     const expectedMean = 1 / lambda
-    const samples = []
+    const samples: number[] = []
 
-    const exponentialDist = (num) => {
+    const exponentialDist = (num: number): number => {
       return -Math.log(1 - num) / lambda
     }
 
@@ -249,7 +268,8 @@ describe('aimless', () => {
       samples.push(randomValue)
     }
 
-    const sampleMean = samples.reduce((sum, value) => sum + value, 0) / numSamples
-    expect(sampleMean).closeTo(expectedMean, .05)
+    const sampleMean =
+      samples.reduce((sum, value) => sum + value, 0) / numSamples
+    expect(sampleMean).closeTo(expectedMean, 0.05)
   })
 })
