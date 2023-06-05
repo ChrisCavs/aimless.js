@@ -1,7 +1,7 @@
 {
   "name": "aimless.js",
   "description": "The missing JS randomness library.",
-  "version": "1.0.3-beta.1",
+  "version": "1.0.3",
   "source": "src/aimless.ts",
   "main": "dist/aimless.js",
   "module": "dist/aimless.module.js",
