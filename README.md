@@ -10,9 +10,9 @@ The missing JS randomness library.  [See a demo](https://chriscavs.github.io/aim
 
 ## Why?
 
-Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function, but what if I wanted to generate a random number within a range?  Better yet, what if I wanted to do anything but get a number between 0 and 1?
+Outside of large game engines and frameworks, there is very little support for generating random numbers in JavaScript.  Sure, there are quite a number of substitutes for the native `Math.random` function. However, these replacements aren't always easy to use, and aren't feature-rich.
 
-Aimless is the missing JS randomness library.  It's tiny (< 6kB), unopinionated, dependency-free, and provides a variety of helpful random number utilities.  Best of all, it's compatible with all your favorite PRNGs.
+Aimless is the missing JS randomness library.  It's tiny (< 6kB), unopinionated, dependency-free, and provides a variety of helpful random number utilities to make your life easier.  Best of all, it's compatible with all your favorite PRNGs.
 
 ## Getting Started
 
@@ -60,24 +60,6 @@ bool() // false
 Every function will default to using the provided `defaultEngine` if no custom engine is provided.  The default engine uses `crypto.getrandomvalues` when available, with a fallback of `Math.random`.
 
 ## API
-
-* [bool](#bool)
-* [char](#char)
-* [customDist](#customDist)
-* [exponentialDist](#exponentialDist)
-* [floatRange](#floatRange)
-* [intRange](#intRange)
-* [intSequence](#intSequence)
-* [normalDist](#normalDist)
-* [normalFloat](#normalFloat)
-* [oneOf](#oneOf)
-* [seedFunc](#seedFunc)
-* [sequence](#sequence)
-* [sign](#sign)
-* [uniqFuncIntRange](#uniqFuncIntRange)
-* [uniqFuncSequence](#uniqFuncSequence)
-* [uuid](#uuid)
-* [weighted](#weighted)
 
 ### bool(engine)
 
@@ -246,6 +228,12 @@ const weightedDiceRoll = weighted(
 )
 // will return 6 much more often than the other options
 ```
+
+## Contributing
+
+If you have any ideas for the project, please [open an issue](https://github.com/ChrisCavs/aimless.js/issues).  I monitor issues frequently and it is a great place for active discussion on new features, refactors, etc.  Even if your idea is half-baked, it may well be worth opening an issue and starting a discussion!
+
+If you'd like, you can also open a [pull request](https://github.com/ChrisCavs/aimless.js/pulls). I am happy to review your code or branch off of it. However, please note that I am unlikely to merge code directly into aimless.js due to code quality / copywrite concerns.  If you're just tooling around with an idea, an [issue](https://github.com/ChrisCavs/aimless.js/issues) might have more success.
 
 ## Browser Support
 
