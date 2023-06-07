@@ -1,7 +1,7 @@
 import { Engine, defaultEngine, randIntRange, sliceOut } from './utils'
 
 const uniqFuncSequence = <T>(arr: T[], engine: Engine = defaultEngine): () => (T | null) => {
-  let tempArr = arr
+  let tempArr = arr.slice()
 
   return () => {
     if (!tempArr.length) return null
