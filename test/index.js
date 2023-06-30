@@ -28,7 +28,8 @@ const {
   uniqFuncSequence,
   uniqFuncIntRange,
   weighted,
-  weightWithEngine
+  weightWithEngine,
+  rgba
 } = require('../dist/aimless')
 
 /* eslint-env mocha */
@@ -173,6 +174,11 @@ describe('aimless', () => {
 
   it('should produce a random boolean', () => {
     expect([true, false]).to.include(bool())
+  })
+
+  it('should produce a random rgb(a) color string', () => {
+    expect(rgba().replace(/\s+/g, '')).to.match(/^rgb\((\d{1,3}),(\d{1,3}),(\d{1,3})\)$/)
+    expect(rgba(0.5).replace(/\s+/g, '')).to.match(/^rgba\((\d{1,3}),(\d{1,3}),(\d{1,3}),([01](\.\d+)?)\)$/)
   })
 
   it('should produce a sign (-1 or 1)', () => {
