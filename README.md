@@ -217,9 +217,9 @@ const id = uuid()
 console.log(id) // ef486db4-7f49-43b3-a1ea-b0e0a22bc944
 ```
 
-### weighted(numbers, weights, engine)
+### weighted(array, weights, engine)
 
-Returns one of the `numbers` provided, biased towards the corresponding `weights` provided.  `numbers` can include floats.
+Returns an item from the provided array, biased towards the corresponding `weights`.
 
 ```es6
 const weightedDiceRoll = weighted(
@@ -233,7 +233,7 @@ const weightedDiceRoll = weighted(
 
 If you have any ideas for the project, please [open an issue](https://github.com/ChrisCavs/aimless.js/issues).  I monitor issues frequently and it is a great place for active discussion on new features, refactors, etc.  Even if your idea is half-baked, it may well be worth opening an issue and starting a discussion!
 
-If you'd like, you can also open a [pull request](https://github.com/ChrisCavs/aimless.js/pulls). I am happy to review your code or branch off of it. However, please note that I am unlikely to merge code directly into aimless.js due to code quality / copywrite concerns.  If you're just tooling around with an idea, an [issue](https://github.com/ChrisCavs/aimless.js/issues) might have more success.
+If you'd like, you can also open a [pull request](https://github.com/ChrisCavs/aimless.js/pulls). I am happy to review your code or branch off of it. However, please note that I am unlikely to merge code directly into aimless.js due to code quality / copyright concerns.  If you're just tooling around with an idea, an [issue](https://github.com/ChrisCavs/aimless.js/issues) might have more success.
 
 ## Browser Support
 
