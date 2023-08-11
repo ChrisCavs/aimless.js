@@ -1,8 +1,8 @@
 import { Engine, defaultEngine } from "./utils"
 
-const weighted = (nums: number[], weights: number[], engine: Engine = defaultEngine): number => {
-  if (nums.length !== weights.length) {
-    throw new Error('Every provided number must have a corresponding weight.')
+const weighted = <T>(array: T[] | readonly T[], weights: number[], engine: Engine = defaultEngine): T => {
+  if (array.length !== weights.length) {
+    throw new Error('Every provided item must have a corresponding weight.')
   }
 
   const totalWeight = weights.reduce(
@@ -14,7 +14,7 @@ const weighted = (nums: number[], weights: number[], engine: Engine = defaultEng
   let cumulativeWeight = 0
   let selectedIndex = 0
 
-  for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     cumulativeWeight += weights[i]
 
     if (rand < cumulativeWeight) {
@@ -23,11 +23,11 @@ const weighted = (nums: number[], weights: number[], engine: Engine = defaultEng
     }
   }
 
-  return nums[selectedIndex]
+  return array[selectedIndex]
 }
 
-const weightWithEngine = (engine = defaultEngine) => {
-  return (nums: number[], weights: number[]) => weighted(nums, weights, engine)
+const weightWithEngine = <T>(engine = defaultEngine) => {
+  return (array: T[] | readonly T[], weights: number[]) => weighted(array, weights, engine)
 }
 
 export {
